@@ -46,8 +46,25 @@ const GamePage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="mt-8 text-center text-xs text-gray-600">
-        Built with React, TypeScript, Zustand & Tailwind CSS
+      <footer className="sign mt-8 text-center text-xs text-gray-500">
+        Created by{" "}
+        <a
+          href="https://serkanbayraktar.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 underline decoration-gray-600 underline-offset-2 transition-colors hover:text-gray-200"
+        >
+          Serkanby
+        </a>
+        {" | "}
+        <a
+          href="https://github.com/Serkanbyx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 underline decoration-gray-600 underline-offset-2 transition-colors hover:text-gray-200"
+        >
+          Github
+        </a>
       </footer>
 
       {/* Promotion Modal Overlay */}
