@@ -90,16 +90,16 @@ Make sure you have the following installed:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/basic-chess-board-logic.git
+git clone https://github.com/YOUR_USERNAME/REPOSITORY_NAME.git
 
 # Navigate to project directory
-cd basic-chess-board-logic
+cd REPOSITORY_NAME
 
-# Install dependencies
-npm install
+# Install dependencies (if applicable)
+# npm install / pip install -r requirements.txt / etc.
 
-# Start development server
-npm run dev
+# Start development server (if applicable)
+# npm start / python app.py / etc.
 ```
 
 ## Style Guidelines

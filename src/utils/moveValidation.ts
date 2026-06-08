@@ -404,32 +404,46 @@ export const hasLegalMoves = (
   return false;
 };
 
+/** A piece together with the color of the square it stands on (0 = light, 1 = dark) */
+interface PieceWithSquare {
+  piece: Piece;
+  squareColor: number;
+}
+
 /** Check for insufficient material draw */
 export const isInsufficientMaterial = (board: Board): boolean => {
-  const pieces: Piece[] = [];
+  const pieces: PieceWithSquare[] = [];
 
   for (let row = 0; row < BOARD_SIZE; row++) {
     for (let col = 0; col < BOARD_SIZE; col++) {
-      if (board[row][col]) pieces.push(board[row][col]!);
+      const piece = board[row][col];
+      if (piece) pieces.push({ piece, squareColor: (row + col) % 2 });
     }
   }
 
   /* King vs King */
   if (pieces.length === 2) return true;
 
-  /* King + minor piece vs King */
+  /* King + a single minor piece (bishop or knight) vs King */
   if (pieces.length === 3) {
-    const nonKing = pieces.find((p) => p.type !== "king");
-    if (nonKing && (nonKing.type === "bishop" || nonKing.type === "knight")) {
+    const minor = pieces.find((p) => p.piece.type !== "king");
+    if (minor && (minor.piece.type === "bishop" || minor.piece.type === "knight")) {
       return true;
     }
   }
 
-  /* King + Bishop vs King + Bishop (same color bishops) */
+  /*
+   * King + Bishop vs King + Bishop is only a forced draw when both bishops
+   * travel on the same color squares; on opposite colors checkmate is possible.
+   */
   if (pieces.length === 4) {
-    const bishops = pieces.filter((p) => p.type === "bishop");
-    if (bishops.length === 2 && bishops[0].color !== bishops[1].color) {
-      return true; // Simplified: treat as draw for basic logic
+    const bishops = pieces.filter((p) => p.piece.type === "bishop");
+    if (
+      bishops.length === 2 &&
+      bishops[0].piece.color !== bishops[1].piece.color &&
+      bishops[0].squareColor === bishops[1].squareColor
+    ) {
+      return true;
     }
   }
 

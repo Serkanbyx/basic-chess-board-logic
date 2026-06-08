@@ -116,7 +116,7 @@ const legalMoves = pseudoLegalMoves.filter(move => {
 ```typescript
 isInCheck(board, color)           // King under attack?
 hasLegalMoves(board, color)       // Any legal moves available?
-isInsufficientMaterial(board)     // K vs K, K+B vs K, K+N vs K
+isInsufficientMaterial(board)     // K vs K, K+B vs K, K+N vs K, K+B vs K+B (same color)
 ```
 
 - **Checkmate**: In check + no legal moves
@@ -207,7 +207,7 @@ Update the responsive board sizing in `Board.tsx`:
 - ✅ Pawn promotion with modal picker (Queen, Rook, Bishop, Knight)
 - ✅ Real-time check detection with visual king highlight
 - ✅ Checkmate and stalemate detection
-- ✅ Insufficient material draw detection (K vs K, K+B vs K, K+N vs K)
+- ✅ Insufficient material draw detection (K vs K, K+B vs K, K+N vs K, and K+B vs K+B on same-colored squares)
 - ✅ Algebraic notation move history
 - ✅ Captured pieces tracking and display
 - ✅ Last move highlighting

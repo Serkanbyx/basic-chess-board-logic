@@ -5,6 +5,15 @@ import { useGameStore } from "../store/useGameStore";
 import { findKing } from "../utils/moveValidation";
 import { Square } from "./Square";
 
+/**
+ * Precomputed, stable position references for every square. Reusing the same
+ * array identities keeps the memoized Square components from re-rendering when
+ * unrelated state changes.
+ */
+const BOARD_POSITIONS: Position[][] = Array.from({ length: BOARD_SIZE }, (_, row) =>
+  Array.from({ length: BOARD_SIZE }, (_, col) => [row, col] as Position)
+);
+
 /** Main chess board grid component */
 const Board = () => {
   const board = useGameStore((s) => s.board);
@@ -48,7 +57,7 @@ const Board = () => {
     >
       {Array.from({ length: BOARD_SIZE }, (_, row) =>
         Array.from({ length: BOARD_SIZE }, (_, col) => {
-          const position: Position = [row, col];
+          const position = BOARD_POSITIONS[row][col];
           const piece = board[row][col];
           const isSelected =
             selectedPosition !== null &&
