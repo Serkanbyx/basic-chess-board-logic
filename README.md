@@ -26,13 +26,19 @@ A fully interactive chess board application with complete piece movement logic, 
 
 The main game screen features an 8x8 chess board with file/rank coordinate labels, a sidebar displaying game status, move history, and captured pieces for both sides.
 
+![Main game screen showing the chess board and sidebar](docs/screenshots/main-game-screen.png)
+
 ### Piece Selection & Valid Moves
 
 When a piece is selected, valid moves are highlighted with animated gray dots on empty squares and rings on capturable squares. The selected piece gets a sky-blue ring with a subtle scale effect.
 
+![Piece selection with valid move highlights on the board](docs/screenshots/piece-selection-valid-moves.png)
+
 ### Pawn Promotion
 
 When a pawn reaches the last rank, a modal overlay appears with a backdrop blur effect, allowing the player to choose between Queen, Rook, Bishop, or Knight.
+
+![Pawn promotion modal with Queen, Rook, Bishop, and Knight options](docs/screenshots/pawn-promotion.png)
 
 ## Technologies
 
